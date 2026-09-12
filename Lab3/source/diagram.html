@@ -7,18 +7,18 @@
 <style>
   @page { size: 13.333in 8.333in; margin: 0; }
   * { box-sizing: border-box; }
-  html, body { margin: 0; width: 1600px; height: 1000px; overflow: hidden; background: #f5f7fb; }
-  body { font-family: "Segoe UI", Arial, sans-serif; }
+  html, body { margin: 0; width: 1600px; height: 1000px; overflow: hidden; background: #ffffff; }
+  body { font-family: Arial, Helvetica, sans-serif; }
   svg { display: block; width: 1600px; height: 1000px; }
-  .hero-title { font-size: 32px; font-weight: 700; fill: #ffffff; }
-  .hero-subtitle { font-size: 17px; fill: #dce8f6; }
-  .layer-title { font-size: 15px; font-weight: 700; letter-spacing: 1.5px; fill: #40536f; }
-  .component-name { font-size: 20px; font-weight: 700; fill: #14233b; }
-  .stereotype { font-size: 14px; fill: #5c6d84; }
-  .responsibility { font-size: 13px; fill: #46566f; }
-  .interface-label { font-size: 13px; font-weight: 600; fill: #21334f; }
-  .interface-detail { font-size: 11.5px; fill: #607089; }
-  .legend { font-size: 13px; fill: #52637d; }
+  .hero-title { font-size: 28px; font-weight: 600; fill: #1a1a1a; }
+  .hero-subtitle { font-size: 15px; fill: #4d4d4d; }
+  .layer-title { font-size: 14px; font-weight: 700; letter-spacing: 0.4px; fill: #1a1a1a; }
+  .component-name { font-size: 18px; font-weight: 600; fill: #1a1a1a; }
+  .stereotype { font-size: 13px; fill: #4d4d4d; }
+  .responsibility { font-size: 12.5px; fill: #333333; }
+  .interface-label { font-size: 13px; font-weight: 600; fill: #1a1a1a; }
+  .interface-detail { font-size: 11.5px; fill: #4d4d4d; }
+  .legend { font-size: 13px; fill: #333333; }
 </style>
 </head>
 <body>
@@ -27,35 +27,35 @@
   <desc id="diagramDesc">Six components arranged in presentation, application services, and security and data layers, connected by six labeled provided and required interfaces.</desc>
   <defs>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#152544" flood-opacity="0.12"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="0" flood-color="#ffffff" flood-opacity="0"/>
     </filter>
     <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L8,4 L0,8 z" fill="#47617f"/>
+      <path d="M0,0 L8,4 L0,8 z" fill="#666666"/>
     </marker>
   </defs>
 
-  <rect width="1600" height="1000" fill="#f5f7fb"/>
-  <rect width="1600" height="116" fill="#163b66"/>
-  <rect x="70" y="72" width="126" height="6" rx="3" fill="#f1b84b"/>
-  <text x="70" y="54" class="hero-title">Micro Lending and Peer Credit Risk Assessor</text>
-  <text x="70" y="94" class="hero-subtitle">UML component diagram · selected pattern: Layered Architecture</text>
+  <rect width="1600" height="1000" fill="#ffffff"/>
+  <rect width="1600" height="116" fill="#ffffff"/>
+  <rect x="70" y="82" width="1460" height="1" fill="#b3b3b3"/>
+  <text x="70" y="43" class="hero-title">Micro Lending and Peer Credit Risk Assessor</text>
+  <text x="70" y="69" class="hero-subtitle">UML Component Diagram - Layered Architecture</text>
   <g transform="translate(1260 28)">
-    <rect width="270" height="60" rx="12" fill="#ffffff" opacity="0.12"/>
-    <text x="22" y="25" font-size="12" font-weight="700" fill="#f1b84b" letter-spacing="1.2">LAB 3</text>
-    <text x="22" y="46" font-size="14" fill="#ffffff">PES2UG24CS036</text>
+    <rect width="270" height="48" fill="#ffffff" stroke="none"/>
+    <text x="270" y="18" text-anchor="end" font-size="12" font-weight="700" fill="#1a1a1a">LAB 3</text>
+    <text x="270" y="39" text-anchor="end" font-size="14" fill="#333333">PES2UG24CS036</text>
   </g>
 
-  <rect x="70" y="145" width="1460" height="170" rx="18" fill="#edf4fb" stroke="#c9d9ec" stroke-width="2"/>
+  <rect x="70" y="120" width="1460" height="195" fill="#ffffff" stroke="#6c8ebf" stroke-width="1.5" stroke-dasharray="7 5"/>
   <text x="96" y="177" class="layer-title">PRESENTATION LAYER</text>
-  <rect x="70" y="335" width="1460" height="300" rx="18" fill="#f3f0fb" stroke="#d7ceed" stroke-width="2"/>
+  <rect x="70" y="335" width="1460" height="300" fill="#ffffff" stroke="#d6b656" stroke-width="1.5" stroke-dasharray="7 5"/>
   <text x="96" y="367" class="layer-title">APPLICATION SERVICES LAYER</text>
-  <rect x="70" y="655" width="1460" height="235" rx="18" fill="#eef8f3" stroke="#cbe4d7" stroke-width="2"/>
+  <rect x="70" y="655" width="1460" height="235" fill="#ffffff" stroke="#82b366" stroke-width="1.5" stroke-dasharray="7 5"/>
   <text x="96" y="687" class="layer-title">SECURITY AND DATA LAYER</text>
 
   <!-- Client portal -->
   <g filter="url(#shadow)">
-    <rect x="610" y="190" width="380" height="96" rx="12" fill="#ffffff" stroke="#2f6fad" stroke-width="2"/>
-    <rect x="610" y="190" width="9" height="96" rx="5" fill="#2f6fad"/>
+    <rect x="610" y="190" width="380" height="96" fill="#dae8fc" stroke="#6c8ebf" stroke-width="2"/>
+    <rect x="610" y="190" width="9" height="96" fill="#dae8fc"/>
     <rect x="951" y="204" width="20" height="13" fill="none" stroke="#2f6fad" stroke-width="2"/>
     <rect x="945" y="210" width="20" height="13" fill="#ffffff" stroke="#2f6fad" stroke-width="2"/>
   </g>
@@ -65,8 +65,8 @@
 
   <!-- Credit risk engine -->
   <g filter="url(#shadow)">
-    <rect x="150" y="420" width="350" height="118" rx="12" fill="#ffffff" stroke="#b5782b" stroke-width="2"/>
-    <rect x="150" y="420" width="9" height="118" rx="5" fill="#b5782b"/>
+    <rect x="150" y="420" width="350" height="118" fill="#fff2cc" stroke="#d6b656" stroke-width="2"/>
+    <rect x="150" y="420" width="9" height="118" fill="#fff2cc"/>
     <rect x="461" y="434" width="20" height="13" fill="none" stroke="#b5782b" stroke-width="2"/>
     <rect x="455" y="440" width="20" height="13" fill="#ffffff" stroke="#b5782b" stroke-width="2"/>
   </g>
@@ -76,8 +76,8 @@
 
   <!-- Loan management service -->
   <g filter="url(#shadow)">
-    <rect x="625" y="405" width="350" height="148" rx="12" fill="#ffffff" stroke="#7656b4" stroke-width="2.5"/>
-    <rect x="625" y="405" width="9" height="148" rx="5" fill="#7656b4"/>
+    <rect x="625" y="405" width="350" height="148" fill="#fff2cc" stroke="#d6b656" stroke-width="2"/>
+    <rect x="625" y="405" width="9" height="148" fill="#fff2cc"/>
     <rect x="936" y="419" width="20" height="13" fill="none" stroke="#7656b4" stroke-width="2"/>
     <rect x="930" y="425" width="20" height="13" fill="#ffffff" stroke="#7656b4" stroke-width="2"/>
   </g>
@@ -88,8 +88,8 @@
 
   <!-- Repayment service -->
   <g filter="url(#shadow)">
-    <rect x="1100" y="420" width="350" height="118" rx="12" fill="#ffffff" stroke="#b5782b" stroke-width="2"/>
-    <rect x="1100" y="420" width="9" height="118" rx="5" fill="#b5782b"/>
+    <rect x="1100" y="420" width="350" height="118" fill="#fff2cc" stroke="#d6b656" stroke-width="2"/>
+    <rect x="1100" y="420" width="9" height="118" fill="#fff2cc"/>
     <rect x="1411" y="434" width="20" height="13" fill="none" stroke="#b5782b" stroke-width="2"/>
     <rect x="1405" y="440" width="20" height="13" fill="#ffffff" stroke="#b5782b" stroke-width="2"/>
   </g>
@@ -99,8 +99,8 @@
 
   <!-- Authorization service -->
   <g filter="url(#shadow)">
-    <rect x="240" y="745" width="390" height="112" rx="12" fill="#ffffff" stroke="#3e8b6b" stroke-width="2"/>
-    <rect x="240" y="745" width="9" height="112" rx="5" fill="#3e8b6b"/>
+    <rect x="240" y="745" width="390" height="112" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
+    <rect x="240" y="745" width="9" height="112" fill="#d5e8d4"/>
     <rect x="591" y="759" width="20" height="13" fill="none" stroke="#3e8b6b" stroke-width="2"/>
     <rect x="585" y="765" width="20" height="13" fill="#ffffff" stroke="#3e8b6b" stroke-width="2"/>
   </g>
@@ -110,8 +110,8 @@
 
   <!-- Repository -->
   <g filter="url(#shadow)">
-    <rect x="920" y="745" width="440" height="112" rx="12" fill="#ffffff" stroke="#3e8b6b" stroke-width="2"/>
-    <rect x="920" y="745" width="9" height="112" rx="5" fill="#3e8b6b"/>
+    <rect x="920" y="745" width="440" height="112" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
+    <rect x="920" y="745" width="9" height="112" fill="#d5e8d4"/>
     <rect x="1321" y="759" width="20" height="13" fill="none" stroke="#3e8b6b" stroke-width="2"/>
     <rect x="1315" y="765" width="20" height="13" fill="#ffffff" stroke="#3e8b6b" stroke-width="2"/>
   </g>
@@ -173,7 +173,7 @@
   <text x="1129" y="670" class="interface-label">Repayment Transaction Repository</text>
   <text x="1110" y="690" class="interface-detail">SQL transaction · repayment / commit status</text>
 
-  <rect x="70" y="915" width="1460" height="54" rx="12" fill="#ffffff" stroke="#d7dee9"/>
+  <rect x="70" y="915" width="1460" height="54" fill="#ffffff" stroke="#808080"/>
   <text x="96" y="948" font-size="13" font-weight="700" fill="#243752">NOTATION</text>
   <circle cx="210" cy="942" r="7" fill="#ffffff" stroke="#47617f" stroke-width="2.5"/>
   <text x="225" y="947" class="legend">Provided interface</text>

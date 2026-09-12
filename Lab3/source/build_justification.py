@@ -6,6 +6,7 @@ from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
+from docx.opc.constants import RELATIONSHIP_TYPE as RT
 from docx.shared import Inches, Pt, RGBColor
 
 
@@ -74,6 +75,26 @@ def add_labeled_paragraph(doc, label, body):
     return p
 
 
+def add_hyperlink(paragraph, text, url):
+    relationship_id = paragraph.part.relate_to(url, RT.HYPERLINK, is_external=True)
+    hyperlink = OxmlElement("w:hyperlink")
+    hyperlink.set(qn("r:id"), relationship_id)
+    run = OxmlElement("w:r")
+    run_properties = OxmlElement("w:rPr")
+    color = OxmlElement("w:color")
+    color.set(qn("w:val"), "0563C1")
+    underline = OxmlElement("w:u")
+    underline.set(qn("w:val"), "single")
+    run_properties.append(color)
+    run_properties.append(underline)
+    run.append(run_properties)
+    text_node = OxmlElement("w:t")
+    text_node.text = text
+    run.append(text_node)
+    hyperlink.append(run)
+    paragraph._p.append(hyperlink)
+
+
 doc = Document()
 section = doc.sections[0]
 section.page_width = Inches(8.5)
@@ -122,9 +143,16 @@ if title_border is not None:
     title_ppr.remove(title_border)
 
 sub = doc.add_paragraph()
-sub.paragraph_format.space_after = Pt(10)
+sub.paragraph_format.space_after = Pt(1)
 r = sub.add_run("PES2UG24CS036  |  Micro-Lending and Peer Credit Risk Assessor")
 set_font(r, size=9.5, bold=True, color="607089")
+
+github = doc.add_paragraph()
+github.paragraph_format.space_after = Pt(7)
+github.paragraph_format.line_spacing = 1.0
+r = github.add_run("GitHub Repository: ")
+set_font(r, size=9.3, bold=True, color="1E293B")
+add_hyperlink(github, "https://github.com/Audatic07/SELABS", "https://github.com/Audatic07/SELABS")
 
 doc.add_heading("Architecture Selection", level=1)
 p = doc.add_paragraph()

@@ -36,3 +36,5 @@ Layered architecture is the best fit for the current project scope. It separates
 | Repayment Service | Financial and Loan Repository | Repayment Transaction Repository | ACID SQL transactions for repayment records and commit status |
 
 The diagram uses a socket at the consuming component for each required interface and a circle at the providing component for each provided interface. Arrowheads show request-data direction; responses return over the same assembly connector.
+
+The diagram uses draw.io-style UML formatting: standard component glyphs, square-cornered color-palette shapes, dashed layer boundaries, orthogonal connectors, and plain interface labels.
