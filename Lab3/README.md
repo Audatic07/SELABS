@@ -8,7 +8,7 @@ This submission models the **Micro-Lending and Peer Credit Risk Assessor** proje
 - `Component_Diagram.pdf` - vector-style PDF export of the diagram
 - `Architecture_Justification.docx` - one-page editable Word justification
 - `Architecture_Justification.pdf` - one-page submission PDF
-- `source/diagram.html` - editable diagram source
+- `Component_Diagram.drawio` - native editable draw.io source
 - `source/build_justification.py` - reproducible Word-document source
 
 ## Architecture decision
@@ -37,4 +37,4 @@ Layered architecture is the best fit for the current project scope. It separates
 
 The diagram uses a socket at the consuming component for each required interface and a circle at the providing component for each provided interface. Arrowheads show request-data direction; responses return over the same assembly connector.
 
-The diagram uses draw.io-style UML formatting: standard component glyphs, square-cornered color-palette shapes, dashed layer boundaries, orthogonal connectors, and plain interface labels.
+The PNG and PDF are exported directly from the native `.drawio` source using draw.io Desktop. They use draw.io's UML component, provided-interface, and required-interface shapes with orthogonal connectors.
