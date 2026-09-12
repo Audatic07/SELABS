@@ -115,7 +115,7 @@ heading.paragraph_format.keep_with_next = True
 
 title = doc.add_paragraph(style="Title")
 title.paragraph_format.space_after = Pt(2)
-title.add_run("Coffee Kiosk Architecture Justification")
+title.add_run("Micro Lending Architecture Justification")
 title_ppr = title._p.get_or_add_pPr()
 title_border = title_ppr.find(qn("w:pBdr"))
 if title_border is not None:
@@ -123,20 +123,20 @@ if title_border is not None:
 
 sub = doc.add_paragraph()
 sub.paragraph_format.space_after = Pt(10)
-r = sub.add_run("Lab 3  |  Component Modelling and Architectural Pattern Selection")
+r = sub.add_run("PES2UG24CS036  |  Micro-Lending and Peer Credit Risk Assessor")
 set_font(r, size=9.5, bold=True, color="607089")
 
 doc.add_heading("Architecture Selection", level=1)
 p = doc.add_paragraph()
 p.paragraph_format.space_after = Pt(6)
 p.paragraph_format.line_spacing = 1.08
-r = p.add_run("We chose Layered Architecture for the Self-Service Coffee Kiosk System. ")
+r = p.add_run("We chose Layered Architecture for the Micro-Lending and Peer Credit Risk Assessor System. ")
 set_font(r, bold=True, color="173B66")
 r = p.add_run(
-    "The kiosk is a compact application with one user interface, a small ordering workflow, "
-    "credit-card payment, local menu data, and receipt-printer integration. Separating these "
-    "responsibilities into presentation, business, and data/device layers provides enough "
-    "structure without the deployment and networking overhead of distributed services."
+    "The system manages sensitive financial profiles, credit-risk assessment, repayment "
+    "scheduling, repayment recording, default warnings, authorization, and transaction "
+    "integrity. Presentation, application-service, and security/data layers give these "
+    "responsibilities clear boundaries while preserving one reliable transaction model."
 )
 set_font(r)
 
@@ -159,9 +159,9 @@ for i, text in enumerate(headers):
     set_font(r, size=9.5, bold=True, color="FFFFFF")
 
 rows = [
-    ("Layered", "Strong fit: simple module boundaries and direct local calls suit one kiosk.", "Some cross-layer call overhead."),
-    ("Microservices", "Supports independent scaling, but the kiosk has too few functions to justify distribution.", "Network, deployment, and consistency complexity."),
-    ("Client-Server", "Central control could help a fleet, but the stated scenario is a self-contained kiosk.", "Server availability becomes a bottleneck and failure point."),
+    ("Layered", "Strong fit: separates financial workflows while keeping one ACID data boundary.", "Some cross-layer call overhead."),
+    ("Microservices", "Could scale risk and repayment independently, but distribution complicates atomic updates.", "Network, deployment, and consistency complexity."),
+    ("Client-Server", "Centralizes rules and data, but provides weaker internal separation by itself.", "Server bottleneck and single point of failure."),
 ]
 for row_index, values in enumerate(rows, 1):
     cells = table.add_row().cells
@@ -182,27 +182,27 @@ set_table_borders(table)
 doc.add_heading("Two Scenario Specific Reasons", level=1)
 add_labeled_paragraph(
     doc,
-    "1  Clear responsibility boundaries.",
-    "The Touchscreen UI can change independently of the Order Manager, while menu storage, payment authorization, and printer control remain behind stable interfaces. This makes the small system easier to test, replace, and maintain.",
+    "1  Reliable financial transactions.",
+    "Repayment recording must preserve ACID behavior. The Repayment Service uses a repository transaction interface so the payment record, outstanding balance, and related loan state can commit or roll back together inside one data-layer boundary.",
 )
 add_labeled_paragraph(
     doc,
-    "2  Practical hardware and data integration.",
-    "The business layer coordinates an order without knowing SQL details or printer commands. The Menu Repository and Receipt Printer Adapter isolate those technologies, reducing the impact of a database or printer-model change.",
+    "2  Maintainable workflow separation.",
+    "Credit-risk rules, repayment logic, authorization, and persistence change for different reasons. Stable interfaces let each component evolve and be tested independently while the Loan Management Service coordinates the complete lending workflow.",
 )
 
 doc.add_heading("Security Advantage", level=1)
 add_labeled_paragraph(
     doc,
-    "Payment isolation.",
-    "Only the Order Manager can request payment through the Payment API. The Touchscreen UI and Menu Repository never receive raw card data; the Payment Service validates the request and returns only an authorization result and transaction reference. This narrows the sensitive-data boundary and supports input validation and least-privilege access.",
+    "Protected financial data.",
+    "The Authorization Service authenticates the user and returns a role-and-permission decision before the Loan Management Service performs protected profile or loan operations. The client never accesses the repository directly. This centralizes policy enforcement, narrows the sensitive-data boundary, and supports least-privilege access.",
 )
 
 doc.add_heading("Performance Benefit", level=1)
 add_labeled_paragraph(
     doc,
-    "Low-latency local flow.",
-    "Presentation, ordering, menu lookup, and printer coordination can use in-process calls or local adapters. Avoiding multiple network hops gives responsive touch interactions and predictable checkout time. Frequently read menu and pricing data can also be cached in the business layer while the repository remains the source of truth.",
+    "Low-latency internal processing.",
+    "Risk assessment, loan coordination, authorization, and repayment logic can communicate through local service interfaces instead of multiple network hops. This keeps profile validation and repayment updates responsive, while stable risk-policy data can be cached without bypassing the repository as the source of truth.",
 )
 
 doc.add_heading("Component and Interface Summary", level=1)
@@ -210,16 +210,17 @@ p = doc.add_paragraph()
 p.paragraph_format.space_after = Pt(0)
 p.paragraph_format.line_spacing = 1.05
 r = p.add_run(
-    "Five components are used: Touchscreen UI, Order Manager, Payment Service, Menu Repository, "
-    "and Receipt Printer Adapter. Their four assembly interfaces are Order API, Payment API, "
-    "Menu Query Interface, and Printer Port."
+    "Six components are used: Borrower and Lender Portal, Loan Management Service, Credit Risk "
+    "Engine, Repayment Service, Authorization Service, and Financial and Loan Repository. Their "
+    "six assembly interfaces cover loan management, risk, repayment, authorization, profile data, "
+    "and atomic repayment transactions."
 )
 set_font(r, size=9.6)
 
-doc.core_properties.title = "Coffee Kiosk Architecture Justification"
+doc.core_properties.title = "Micro Lending Architecture Justification"
 doc.core_properties.subject = "Lab 3 Component Modelling and Architectural Pattern Selection"
-doc.core_properties.author = "Audatic07"
-doc.core_properties.keywords = "UML, component diagram, layered architecture, coffee kiosk"
+doc.core_properties.author = "PES2UG24CS036"
+doc.core_properties.keywords = "UML, component diagram, layered architecture, micro-lending, credit risk"
 
 doc.save(OUTPUT)
 print(OUTPUT)
